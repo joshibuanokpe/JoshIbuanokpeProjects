@@ -1,0 +1,28 @@
+This Python is a project that was part of a Masters module with three datasets involving Airports and frequencies: airports.csv, airport-frequencies.csv
+and runways.csv (included in the repository).
+
+It was requested that firstly, the CSV files were converted to JSON or XML, I chose JSON. 
+
+Next, we were asked to remove all airports with type=closed from all datasets - the type column only appeared in the airports.csv file, 
+therefore, the airport_ref column that appears in both the airport-frequencies.csv and runways.csv was used to remove these type=closed from these
+two datasets. 
+
+The 'client brief' also requested that all but UK airports that are either 'small_airport', 'medium_airport', and 'large_airport' are also filtered
+out and a new field be created with these, such that analysis based on these airport types could be undertaken. 
+
+The airports dataset was to be adapted to include information of the communication frequencies that each airport uses, from the 'frequency_mhz' column
+in the airport-frequencies.csv file.
+
+These findings were to be presented in a coherent GUI that allows the user to upload the relevant files and have outcomes of analysis presented to them.
+
+Firstly, the mean, mode and median frequencies were to be presented for all 'large_airport' airports and all frequencies above 100Mhz. In order to 
+provide further functionality to the user, I presented this data for 'small_airport' and 'medium_airport' as well, and provided some entry fields for
+the user to input ranges to analyse at a higher level than requested.
+
+Next, an appropriate graphical representation of the distribution of frequencies for 'small_airport' airports. A histogram is normally a good starting
+point for continuous data, but the data was not normally distributed. Therefore, I opted for a boxplot to show the range of anomalies. I zoomed into the
+box plot as the range of ffrequencies was over 600MHz. Like in the previous part, I decided to provide graphs for 'medium_airport' and 'large_airport' 
+airports too, such that these could be compared against each other if desired.
+
+Finally, the client asked for a grpahical representation of the frequency distributions of the three types of airport against each other. For this, I 
+used a scatter graph with frequency bandings and a colourmap to present any correlations between them.
