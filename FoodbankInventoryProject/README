@@ -1,0 +1,12 @@
+This is a personal project in Python that I believe may take a few months. It is still quite rough, it utilises OOP and a basic Tkinter GUI to add food items 
+to an inventory. The eventual aims are:
+
+- To create a mechanism that allows for food to be discharged
+- To write and overwrite these data onto CSV (will be straightforward)
+- To write the data using a relational database to develop SQL skills
+- To be able to use datetime to incoroporate expiry dates, food order lead times
+- To use this information to inform the most efficient combinations of food pack to give to households they serve, while minimising waste and finally
+- Be able to provide prompts on what foods need tp be donated or ordered so that these actions can be taken before it is too late
+
+I hope that as I learn more, these features that I want to add will become possible and I will hopefully be able to deploy the system at Southwark Foodbank,
+the local Pecan that I have been a partner of for 2 years.
