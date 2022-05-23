@@ -145,6 +145,7 @@ public class BreadthFirst{
 		//simple scanner to input initial state for completeness
 		System.out.print("Enter an initial vacuum state to compute the search (Integer 1-8): ");
 		int userInput = sc.nextInt();
+		System.out.println("--------------------------------------------");
 		bf.runAlgo(userInput);
 		
 		
