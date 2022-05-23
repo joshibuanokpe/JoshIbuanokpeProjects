@@ -100,7 +100,7 @@ public class BreadthFirst{
 		System.out.println("Initial state " + inputState);
 		//getting the children of that state
 		int [] firstChildren = getStateChildren(inputState);
-		System.out.println(inputState + " has children " + Arrays.toString(firstChildren));
+		System.out.println("State " + inputState + " has children " + Arrays.toString(firstChildren));
 		enqueueFrontier(getStateChildren(inputState));
 		
 		System.out.println("Initial frontier " + frontier);
