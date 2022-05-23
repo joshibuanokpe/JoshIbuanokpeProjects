@@ -1,9 +1,7 @@
 import java.util.*;
 public class BreadthFirst{
 	
-	int inputState, leftChild, rightChild, suckChild;
-	//private ArrayList<Integer> frontier;
-	//private ArrayList<Integer> explored;
+	int inputState;
 	int [] children, stateChildren;
 	int child;
 	ArrayList<Integer> frontier = new ArrayList<Integer>();
@@ -13,61 +11,40 @@ public class BreadthFirst{
 	//setting the children of each of the vacuum world states
 	private int[] getStateChildren(int inputState) {
 		if(inputState == 1) {
-			leftChild = 1;
-			rightChild = 2;
-			suckChild = 3;
 			int[] children = {1, 2, 3};
 			return children;
 			
 		}else if(inputState == 2) {
-			leftChild = 1;
-			rightChild = 2;
-			suckChild = 6;
 			int[] children = {1, 2, 6};
 			return children;
 			
 		}else if(inputState == 3) {
-			leftChild = 3;
-			rightChild = 4;
-			suckChild = 3;
 			int[] children = {3, 4, 3};
 			return children;
 			
 		}else if(inputState == 4) {
-			leftChild = 3;
-			rightChild = 4;
-			suckChild = 8;
 			int[] children = {3, 4, 8};
 			return children;
 			
 		}else if(inputState == 5) {
-			leftChild = 5;
-			rightChild = 6;
-			suckChild = 7;
 			int[] children = {5, 6, 7};
 			return children;
 			
 		}else if(inputState == 6) {
-			leftChild = 5;
-			rightChild = 6;
-			suckChild = 6;
 			int[] children = {5, 6, 6};
 			return children;
 			
 		}else if(inputState == 7) {
-			leftChild = 7;
-			rightChild = 8;
-			suckChild = 7;
 			int[] children = {7, 8, 7};
 			return children;
 			
-		}else { //if(inputState == 8) {
-			leftChild = 7;
-			rightChild = 8;
-			suckChild = 8;
+		}else if(inputState == 8) {
+
 			int[] children = {7, 8, 8};
 			return children;
-		}	
+		}else {
+			return null;
+		}
 	}
 	
 	//checking if a state is a goal state
@@ -105,6 +82,7 @@ public class BreadthFirst{
 
 	}
 	
+	//using overloading for enqueue for an array of states
 	private void enqueueFrontier(int[] children) {
 		for(int child: children) {
 			if(!explored.contains(child) && !frontier.contains(child)) {
@@ -117,17 +95,17 @@ public class BreadthFirst{
 	}
 	
 	void runAlgo(int inputState) {
+		//initially adding input state to frontier
 		enqueueFrontier(inputState);
-		//addExplored(inputState);
-		//System.out.println("Initial frontier " + frontier);
 		System.out.println("Initial state " + inputState);
+		//getting the children of that state
 		int [] firstChildren = getStateChildren(inputState);
 		System.out.println(inputState + " has children " + Arrays.toString(firstChildren));
 		enqueueFrontier(getStateChildren(inputState));
 		
 		System.out.println("Initial frontier " + frontier);
 		System.out.println("Initial explored" + explored);
-		
+		//loop to make algorithm keep looping until the frontier is empty
 		while(frontier.size() != 0) {
 			int currentState = getFrontierHead();
 			
@@ -137,18 +115,19 @@ public class BreadthFirst{
 			
 			int[] currentChildren = getStateChildren(currentState);
 			System.out.println("Adding " + Arrays.toString(currentChildren) + " to frontier");
+			//add children to the frontier
 			enqueueFrontier(getStateChildren(currentState));
+			//remove from the frontier queue
 			dequeueFrontier();
+			//if goal state reached, algorithm breaks, otherwise it goes to next state in the frontier
 			if(checkGoalState(currentState)) {
 				System.out.println("Goal state State " + currentState + " reached, both rooms are clean!");
 				break;
-				//return currentState;
+				
 			}else {
 				addExplored(currentState);
 				System.out.println("State " + currentState + " is not a goal state\nChecking next state...");
-				//dequeueFrontier();
 			}
-			//dequeueFrontier();
 		}
 		
 		
@@ -161,8 +140,9 @@ public class BreadthFirst{
 	public static void main(String[] args) {
 		 
 		Scanner sc = new Scanner(System.in);
+		//initialising the object
 		BreadthFirst bf = new BreadthFirst();
-		
+		//simple scanner to input initial state for completeness
 		System.out.print("Enter an initial vacuum state to compute the search (Integer 1-8): ");
 		int userInput = sc.nextInt();
 		bf.runAlgo(userInput);
