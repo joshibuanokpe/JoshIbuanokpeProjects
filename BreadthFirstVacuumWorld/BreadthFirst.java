@@ -108,23 +108,23 @@ public class BreadthFirst{
 		//loop to make algorithm keep looping until the frontier is empty
 		while(frontier.size() != 0) {
 			int currentState = getFrontierHead();
-			
-			System.out.println("Current state being computed is State " + currentState);
-			System.out.println("Current frontier " + frontier);
-			System.out.println("Current explored" + explored);
-			
-			int[] currentChildren = getStateChildren(currentState);
-			System.out.println("Checking if children " + Arrays.toString(currentChildren) + " should be added to frontier");
-			//add children to the frontier
-			enqueueFrontier(getStateChildren(currentState));
-			//remove from the frontier queue
-			dequeueFrontier();
 			//if goal state reached, algorithm breaks, otherwise it goes to next state in the frontier
 			if(checkGoalState(currentState)) {
 				System.out.println("Goal state State " + currentState + " reached, both rooms are clean!");
 				break;
 				
 			}else {
+				
+				System.out.println("Current state being computed is State " + currentState);
+				System.out.println("Current frontier " + frontier);
+				System.out.println("Current explored" + explored);
+				
+				int[] currentChildren = getStateChildren(currentState);
+				System.out.println("Checking if children " + Arrays.toString(currentChildren) + " should be added to frontier");
+				//add children to the frontier
+				enqueueFrontier(getStateChildren(currentState));
+				//remove from the frontier queue
+				dequeueFrontier();
 				addExplored(currentState);
 				System.out.println("State " + currentState + " is not a goal state\nChecking next state...");
 			}
