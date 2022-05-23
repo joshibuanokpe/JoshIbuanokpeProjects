@@ -114,7 +114,7 @@ public class BreadthFirst{
 			System.out.println("Current explored" + explored);
 			
 			int[] currentChildren = getStateChildren(currentState);
-			System.out.println("Adding " + Arrays.toString(currentChildren) + " to frontier");
+			System.out.println("Checking if children " + Arrays.toString(currentChildren) + " should be added to frontier");
 			//add children to the frontier
 			enqueueFrontier(getStateChildren(currentState));
 			//remove from the frontier queue
