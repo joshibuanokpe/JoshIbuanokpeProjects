@@ -4,35 +4,16 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 pd.options.display.max_rows = None
 pd.options.display.max_columns = None
-# Support functions
-from sklearn.preprocessing import PolynomialFeatures
-from sklearn.model_selection import cross_val_score
-from sklearn.model_selection import GridSearchCV
-from scipy.stats import uniform
-
-# Fit models
-from sklearn.linear_model import LogisticRegression
-from sklearn.svm import SVC
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import confusion_matrix
-#from xgboost import XGBClassifier
 
-from sklearn.impute import SimpleImputer
-from sklearn.model_selection import train_test_split
-from sklearn.utils import resample
 
-# Scoring functions
-from sklearn.metrics import accuracy_score
-from sklearn.metrics import classification_report
-from sklearn.metrics import roc_auc_score
-from sklearn.metrics import roc_curve
 
 
 dfTrain = pd.read_csv('/Users/jibuanok/Documents/u/DM/BankChurnersTrain.csv', delimiter=',')
 dfTrainSet = pd.read_csv('/Users/jibuanok/Documents/u/DM/BankChurnersTrain.csv', delimiter=',')
 dfTrain2 = pd.read_csv('/Users/jibuanok/Documents/u/DM/BankChurnersTrain.csv', delimiter=',')
-#dfTrain2.loc[dfTrain2.Attrition_Flag == 'Existing Customer', 'Attrition_Flag'] = 1
-#dfTrain2.loc[dfTrain2.Attrition_Flag == 'Attrited Customer', 'Attrition_Flag'] = 0
+
 
 
 dfTrain2['Attrition_Flag'] = dfTrain2['Attrition_Flag'].replace(['Existing Customer'], 0)
@@ -81,18 +62,6 @@ dfTest5['Attrition_Flag'] = dfTest5['Attrition_Flag'] .replace(['Existing Custom
 dfTest5['Attrition_Flag'] = dfTest5['Attrition_Flag'] .replace(['Attrited Customer'], 1)
 
 
-#dfTrain = dfTrain.drop(["CCNum","Trans_date_Time", "Surname"],axis = 1) #drop irrelevant columns
-#dfTest = dfTest.drop(["CCNum","Trans_date_Time", "Surname"],axis = 1) #drop irrelevant columns
-
-#print(df.isnull().sum()) #find number of empty values in all columns
-"""
-print('')
-print('Train Balances')
-print(100 * dfTrain['Balance'].value_counts(normalize=True).head())
-print('')
-print('Test Balances')
-print(100 * dfTest['Balance'].value_counts(normalize=True).head())
-"""
 
 dfTrain5_upsampled =pd.get_dummies(dfTrain5, columns=['Gender', 'Geography', 'Education_Level', 'Income_Category',
                                                       'Card_Category'])
@@ -316,15 +285,6 @@ print('Tenure fraud: Confusion matrix: \n', rfTenureConfusionMatrix)
 
 
 
-
-#print(dfBalances.head())
-#print(dfBalances.median())
-
-#print(dfTrain4.dtypes)
-#print(dfTrainAttProfile3.shape)
-#print(dfTestAttProfile3.shape)
-
-"""
 cmap = "RdYlGn"
 plt.figure(figsize=(20, 20))
 ax = sns.heatmap(
@@ -340,4 +300,3 @@ ax.set_xticklabels(
 )
 plt.show()
 
-"""
