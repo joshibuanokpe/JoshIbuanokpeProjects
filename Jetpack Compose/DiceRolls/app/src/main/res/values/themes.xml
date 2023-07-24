@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.DiceRolls" parent="android:Theme.Material.Light.DarkActionBar" >
+        <item name="android:colorPrimary" type="">#1048F5</item>
+        <item name="android:colorPrimaryDark">#08E8DA</item>
+        <item name="android:colorAccent">#7108E8</item>
+        <item name="android:navigationBarColor">
+            @android:color/transparent
+        </item>
+
+        <!-- Optional: set to transparent if your app is drawing behind the status bar. -->
+        <item name="android:statusBarColor">
+            #FFFFFF
+        </item>
+
+        <!-- Optional: set the status bar light and content dark. -->
+        <item name="android:windowLightStatusBar">
+            false
+        </item>
+    </style>
+</resources>
